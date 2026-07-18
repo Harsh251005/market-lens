@@ -3,6 +3,8 @@ name = "marketlens"
 version = "0.1.0"
 requires-python = ">=3.12"
 dependencies = [
+    "google-auth>=2.56.0",
+    "gspread>=6.2.1",
     "pandas>=3.0.3",
     "pydantic>=2.13.4",
     "python-dotenv>=1.2.2",
