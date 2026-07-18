@@ -1,25 +1,24 @@
 from collections import defaultdict
 
-from src.price_provider import get_live_prices
-from src.watchlist import WATCHLIST
-from src.yahoo_provider import get_stock_metadata
+from src.market_service import get_market_data
 
 
 def main():
     grouped = defaultdict(list)
 
-    for symbol in WATCHLIST:
-        stock = get_stock_metadata(symbol)
+    stocks = get_market_data()
+
+    for stock in stocks:
         grouped[stock.sector].append(stock)
 
-    prices = get_live_prices(WATCHLIST)
-
-    print(prices.head())
-
-    for sector, stocks in grouped.items():
+    for sector, sector_stocks in grouped.items():
         print(f"\n=== {sector} ===")
-        for stock in stocks:
-            print(stock.symbol)
+
+        for stock in sector_stocks:
+            print(
+                f"{stock.symbol:<15}"
+                f"{stock.current_price}"
+            )
 
 
 if __name__ == "__main__":
