@@ -1,21 +1,13 @@
-from collections import defaultdict
-
 from src.config import SPREADSHEET_ID
-from src.market_service import get_market_data
 from src.spreadsheet_service import SpreadsheetService
+from src.sync_service import SyncService
 
 
 def main():
     spreadsheet = SpreadsheetService(SPREADSHEET_ID)
+    sync_service = SyncService(spreadsheet)
 
-    grouped = defaultdict(list)
-
-    for stock in get_market_data():
-        grouped[stock.sector].append(stock)
-
-    for sector, stocks in grouped.items():
-        spreadsheet.write_sector(sector, stocks)
-        print(f"Updated {sector}")
+    sync_service.sync()
 
 
 if __name__ == "__main__":
