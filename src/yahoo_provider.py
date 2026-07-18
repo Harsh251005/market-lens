@@ -38,6 +38,12 @@ def get_stock_metadata(symbol: str) -> Stock:
         company=info.get("longName", symbol),
         sector=info.get("sector", "Unknown"),
         industry=info.get("industry", "Unknown"),
+        market_cap=info.get("marketCap"),
+        pe_ratio=info.get("trailingPE"),
+        eps=info.get("trailingEps"),
+        dividend_yield=info.get("dividendYield"),
+        currency=info.get("currency"),
+        exchange=info.get("exchange"),
     )
 
     cache[symbol] = stock.model_dump()

@@ -13,3 +13,10 @@ class Stock(BaseModel):
     day_high: float | None = None
     day_low: float | None = None
     volume: int | None = None
+
+    market_cap: float | None = None
+    pe_ratio: float | None = None
+    eps: float | None = None
+    dividend_yield: float | None = None
+    currency: str | None = None
+    exchange: str | None = None
