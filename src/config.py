@@ -1,4 +1,9 @@
+import os
 from pathlib import Path
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 UPDATE_INTERVAL_MINUTES = 5
 
@@ -10,4 +15,4 @@ YFINANCE_INTERVAL = "1m"
 ROOT_PATH = Path(__file__).resolve().parents[1]
 
 GOOGLE_CREDENTIALS_FILE = ROOT_PATH / "credentials/service_account.json"
-SPREADSHEET_ID = "1Nqv1aNIZQdFj941z21zrztxvf3_fyXlsfFE1sKjjtmg"
+SPREADSHEET_ID = os.environ["SPREADSHEET_ID"]
